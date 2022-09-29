@@ -17,7 +17,7 @@ const ConsRead = () => {
     })
   }, []);
 
-
+  
   return (
     <>
       <div className="w-full h-fit px-[8%] py-[4%] grid gap-8">

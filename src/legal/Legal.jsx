@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import avatar from "../assets/avatar.jpeg";
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
 
 const Legal = () => {
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios.get("https://be-law-pq.vercel.app/api/getLegal")
-    .then(res => {
-        setData(res.data)
-    }).catch(err => {
-        console.log(err);
-    })
-  }, []);
+  const { data } = useQuery("legal-content", () =>
+    axios.get("https://be-law-pq.vercel.app/api/getLegal"),
+    {
+      staleTime: Infinity
+    }
+  );
+  
+  const postContent = data?.data;
 
   const truncateString = (str, num) => {
     if (str.length > num) {
@@ -23,7 +23,7 @@ const Legal = () => {
     }
   };
 
-  const content = data.map((item) => {
+  const content = postContent?.map((item) => {
     return (
       <div key={item._id} className="w-full h-fit p-5 shadow-xl">
         <Link to={`/legal/read/${item._id}`}>

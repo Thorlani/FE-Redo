@@ -1,9 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Navbar from "./components/Navbar";
 import Recommended from "./components/Recommended";
@@ -19,28 +15,33 @@ import Constitutional from "./constitutional/Constitutional";
 import LegalRead from "./legal/LegalRead";
 import ContractRead from "./contract/ContractRead";
 import ConsRead from "./constitutional/ConsRead";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/legal" element={<Legal />} />
-        <Route path="/legal/read/:id" element={<LegalRead />} />
-        <Route path="/contract" element={<Contract />} />
-        <Route path="/contract/read/:id" element={<ContractRead />} />
-        <Route path="/constitutional" element={<Constitutional />} />
-        <Route path="/constitutional/read/:id" element={<ConsRead />} />
-      </Routes>
-      <Recommended />
-      <Footer />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/legal/read/:id" element={<LegalRead />} />
+          <Route path="/contract" element={<Contract />} />
+          <Route path="/contract/read/:id" element={<ContractRead />} />
+          <Route path="/constitutional" element={<Constitutional />} />
+          <Route path="/constitutional/read/:id" element={<ConsRead />} />
+        </Routes>
+        <Recommended />
+        <Footer />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import avatar from "../assets/avatar.jpeg";
 import { Link } from "react-router-dom";
-import styles from "../Loader.module.css"
+import styles from "../Loader.module.css";
+import { useQuery } from "react-query";
 
 const Constitutional = () => {
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios.get("https://be-law-pq.vercel.app/api/getConstitutional")
-    .then(res => {
-        setData(res.data)
-    }).catch(err => {
-        console.log(err);
-    })
-  }, []);
+  const { data } = useQuery("constitutional-content", () =>
+    axios.get("https://be-law-pq.vercel.app/api/getConstitutional"),
+    {
+      staleTime: Infinity
+    }
+  );
 
+  const postContent = data?.data;
   const truncateString = (str, num) => {
     if (str.length > num) {
       return str.slice(0, num) + "...Read More";
@@ -24,7 +23,7 @@ const Constitutional = () => {
     }
   };
 
-  const content = data.map((item) => {
+  const content = postContent?.map((item) => {
     return (
       <div key={item._id} className="w-full h-fit p-5 shadow-xl">
         <Link to={`/constitutional/read/${item._id}`}>
@@ -66,9 +65,18 @@ const Constitutional = () => {
   return (
     <>
       <div className="w-full h-fit px-[8%] py-[4%] grid gap-8">
-      <div className="w-full h-fit">
-          <h1 id={styles.break} className="mt-[30px] font-medium md:font-bold lg:font-extrabold text-6xl md:text-7xl text-left">Checkout free answered Constitutional law Questions</h1>
-          <p className="mt-[30px] font-normal leading-[3.25rem] text-xl md:text-3xl md:leading-[4.25rem] mb-[50px]">Are you a Law student? This is the right place for you to learn how to answer law questions and the appropriate standard to follow when answering your <span>Constitutional law Exam Questions</span></p>
+        <div className="w-full h-fit">
+          <h1
+            id={styles.break}
+            className="mt-[30px] font-medium md:font-bold lg:font-extrabold text-6xl md:text-7xl text-left"
+          >
+            Checkout free answered Constitutional law Questions
+          </h1>
+          <p className="mt-[30px] font-normal leading-[3.25rem] text-xl md:text-3xl md:leading-[4.25rem] mb-[50px]">
+            Are you a Law student? This is the right place for you to learn how
+            to answer law questions and the appropriate standard to follow when
+            answering your <span>Constitutional law Exam Questions</span>
+          </p>
         </div>
         {content}
       </div>
