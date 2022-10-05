@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Logo from "../assets/logo.png";
+import useAnalyticsEventTracker from "./useAnalytics";
 
 const Navbar = () => {
+  const gaEventTracker = useAnalyticsEventTracker("Location");
+
   const [isToggle, setIsToggle] = useState(false);
 
   const showMenu = () => {
@@ -13,7 +16,7 @@ const Navbar = () => {
   return (
     <>
       <div className="w-full px-[8%] p-[2%] flex justify-between items-center">
-        <Link to={"/"}>
+        <Link to={"/"} onClick={gaEventTracker("Home")}>
           <img
             src={Logo}
             alt="belovedthorlani"
@@ -24,19 +27,29 @@ const Navbar = () => {
         </Link>
         <ul className="hidden lg:flex w-[70%] justify-between">
           <li id="home" className="cursor-pointer text-center">
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} onClick={gaEventTracker("Home")}>
+              Home
+            </Link>
           </li>
           <li className="cursor-pointer text-center">
-            <Link to={"/contract"}>Contract PQ</Link>
+            <Link to={"/contract"} onClick={gaEventTracker("Contract")}>
+              Contract PQ
+            </Link>
           </li>
           <li className="cursor-pointer text-center">
-            <Link to={"/legal"}>Legal system PQ</Link>
+            <Link to={"/legal"} onClick={gaEventTracker("Legal system")}>
+              Legal system PQ
+            </Link>
           </li>
           <li className="cursor-pointer text-center">
-            <Link to={"/constitutional"}>Constitutional law PQ</Link>
+            <Link to={"/constitutional"} onClick={gaEventTracker("Cons law")}>
+              Constitutional law PQ
+            </Link>
           </li>
           <li className="cursor-pointer text-center">
-            <Link to={"/about"}>About Us</Link>
+            <Link to={"/about"} onClick={gaEventTracker("About")}>
+              About Us
+            </Link>
           </li>
         </ul>
         <ul
@@ -48,31 +61,41 @@ const Navbar = () => {
             onClick={showMenu}
             className="cursor-pointer text-center text-[white] absolute top-[100px]"
           >
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} onClick={gaEventTracker("Home")}>
+              Home
+            </Link>
           </li>
           <li
             onClick={showMenu}
             className="cursor-pointer text-center text-[white] absolute top-[180px]"
           >
-            <Link to={"/contract"}>Contract PQ</Link>
+            <Link to={"/contract"} onClick={gaEventTracker("Contract")}>
+              Contract PQ
+            </Link>
           </li>
           <li
             onClick={showMenu}
             className="cursor-pointer text-center text-[white] absolute top-[260px]"
           >
-            <Link to={"/legal"}>Legal system PQ</Link>
+            <Link to={"/legal"} onClick={gaEventTracker("Legal system")}>
+              Legal system PQ
+            </Link>
           </li>
           <li
             onClick={showMenu}
             className="cursor-pointer text-center text-[white] absolute top-[340px]"
           >
-            <Link to={"/constitutional"}>Constitutional law PQ</Link>
+            <Link to={"/constitutional"} onClick={gaEventTracker("Cons law")}>
+              Constitutional law PQ
+            </Link>
           </li>
           <li
             onClick={showMenu}
             className="cursor-pointer text-center text-[white] absolute top-[420px]"
           >
-            <Link to={"/about"}>About Us</Link>
+            <Link to={"/about"} onClick={gaEventTracker("About")}>
+              About Us
+            </Link>
           </li>
         </ul>
         <button

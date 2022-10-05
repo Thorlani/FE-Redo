@@ -16,8 +16,12 @@ import LegalRead from "./legal/LegalRead";
 import ContractRead from "./contract/ContractRead";
 import ConsRead from "./constitutional/ConsRead";
 import { QueryClient, QueryClientProvider } from "react-query";
+import ReactGA from "react-ga";
 
 const queryClient = new QueryClient();
+
+const TRACKING_ID = "UA-228594314-1";
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   return (

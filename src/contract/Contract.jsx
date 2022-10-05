@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import avatar from "../assets/avatar.jpeg";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import ReactGA from "react-ga";
 
 const Contract = () => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
-  const { data } = useQuery("contract-content", () =>
-    axios.get("https://be-law-pq.vercel.app/api/getContract"),
+  const { data } = useQuery(
+    "contract-content",
+    () => axios.get("https://be-law-pq.vercel.app/api/getContract"),
     {
-      staleTime: Infinity
+      staleTime: Infinity,
     }
   );
-  
+
   const postContent = data?.data;
 
   const truncateString = (str, num) => {
@@ -65,9 +70,15 @@ const Contract = () => {
   return (
     <>
       <div className="w-full h-fit px-[8%] py-[4%] grid gap-8">
-      <div className="w-full h-fit">
-          <h1 className="mt-[30px] font-medium md:font-bold lg:font-extrabold text-6xl md:text-7xl text-left">Checkout free answered Contract Questions</h1>
-          <p className="mt-[30px] font-normal leading-[3.25rem] text-xl md:text-3xl md:leading-[4.25rem] mb-[50px]">Are you a Law student? This is the right place for you to learn how to answer law questions and the appropriate standard to follow when answering your <span>Contract Exam Questions</span></p>
+        <div className="w-full h-fit">
+          <h1 className="mt-[30px] font-medium md:font-bold lg:font-extrabold text-6xl md:text-7xl text-left">
+            Checkout free answered Contract Questions
+          </h1>
+          <p className="mt-[30px] font-normal leading-[3.25rem] text-xl md:text-3xl md:leading-[4.25rem] mb-[50px]">
+            Are you a Law student? This is the right place for you to learn how
+            to answer law questions and the appropriate standard to follow when
+            answering your <span>Contract Exam Questions</span>
+          </p>
         </div>
         {content}
       </div>

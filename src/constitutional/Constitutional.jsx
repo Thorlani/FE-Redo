@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import avatar from "../assets/avatar.jpeg";
 import { Link } from "react-router-dom";
 import styles from "../Loader.module.css";
 import { useQuery } from "react-query";
+import ReactGA from "react-ga";
 
 const Constitutional = () => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
-  const { data } = useQuery("constitutional-content", () =>
-    axios.get("https://be-law-pq.vercel.app/api/getConstitutional"),
+  const { data } = useQuery(
+    "constitutional-content",
+    () => axios.get("https://be-law-pq.vercel.app/api/getConstitutional"),
     {
-      staleTime: Infinity
+      staleTime: Infinity,
     }
   );
 

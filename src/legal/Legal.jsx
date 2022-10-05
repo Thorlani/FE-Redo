@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import avatar from "../assets/avatar.jpeg";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import ReactGA from "react-ga";
 
 const Legal = () => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
-  const { data } = useQuery("legal-content", () =>
-    axios.get("https://be-law-pq.vercel.app/api/getLegal"),
+  const { data } = useQuery(
+    "legal-content",
+    () => axios.get("https://be-law-pq.vercel.app/api/getLegal"),
     {
-      staleTime: Infinity
+      staleTime: Infinity,
     }
   );
-  
+
   const postContent = data?.data;
 
   const truncateString = (str, num) => {
