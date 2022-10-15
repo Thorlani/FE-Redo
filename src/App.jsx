@@ -17,6 +17,7 @@ import ContractRead from "./contract/ContractRead";
 import ConsRead from "./constitutional/ConsRead";
 import { QueryClient, QueryClientProvider } from "react-query";
 import ReactGA from "react-ga";
+import { motion } from "framer-motion";
 
 const queryClient = new QueryClient();
 
