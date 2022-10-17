@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ReactGA from "react-ga";
+import AdSense from "react-adsense";
 
 const Terms = () => {
   useEffect(() => {
@@ -8,6 +9,12 @@ const Terms = () => {
   return (
     <>
       <div className="px-[8%]  w-full">
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ width: "100%", height: 300 }}
+          format=""
+        />
         <h1 className="text-lg font-extrabold my-4">Terms</h1>
         <h2 className="mb-2">
           <strong>Terms of Use</strong>
@@ -33,6 +40,13 @@ const Terms = () => {
           adding your own content to the site, you are agreeing to be surrounded
           by our Terms of Service.
         </p>
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ display: "block" }}
+          layout="in-article"
+          format="fluid"
+        />
         <h2 className="mb-2">Right to Privacy</h2>
         <p className="mb-4">
           Client’s Privacy is the major factor that we care about. Any
@@ -45,6 +59,13 @@ const Terms = () => {
           Client data will only be used for sending them information that they
           have requested to be notified about.
         </p>
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ display: "block" }}
+          layout="in-article"
+          format="fluid"
+        />
         <h2 className="mb-2">
           <strong>Intellectual Property</strong>
         </h2>
@@ -84,6 +105,12 @@ const Terms = () => {
           client’s to not use or access the site.
         </p>
       </div>
+      <AdSense.Google
+        client="ca-pub-9515848627350834"
+        slot="9754373653"
+        style={{ width: "100%", height: 300 }}
+        format=""
+      />
     </>
   );
 };

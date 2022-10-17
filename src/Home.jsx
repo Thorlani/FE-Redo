@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ReactGA from "react-ga";
+import AdSense from "react-adsense";
 
 export default function Home() {
   useEffect(() => {
@@ -14,6 +15,14 @@ export default function Home() {
         <p className="mt-[30px] font-medium text-3xl">Home of Online</p>
         <h4 className="mt-[30px] font-bold text-4xl">Law past questions</h4>
       </div>
+      <AdSense.Google
+        client="ca-pub-9515848627350834"
+        slot="9754373653"
+        style={{ display: "block" }}
+        format="auto"
+        responsive="true"
+        layoutKey="-gw-1+2a-9x+5c"
+      />
     </>
   );
 }

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReactGA from "react-ga";
+import AdSense from "react-adsense";
 
 const ContractRead = () => {
   useEffect(() => {
@@ -44,6 +45,13 @@ const ContractRead = () => {
               </span>
             </div>
           </div>
+          <AdSense.Google
+            client="ca-pub-9515848627350834"
+            slot="9754373653"
+            style={{ display: "block" }}
+            layout="in-article"
+            format="fluid"
+          />
           <div
             className="px-[2%] mt-[50px] md:mt-[70px] lg:mt-[100px]"
             dangerouslySetInnerHTML={{ __html: data.answer }}

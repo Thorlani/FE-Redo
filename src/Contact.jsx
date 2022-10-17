@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import twitter from "./assets/twitter.svg";
 import whatsapp from "./assets/whatsapp.svg";
 import ReactGA from "react-ga";
+import AdSense from "react-adsense";
 
 const Contact = () => {
   useEffect(() => {
@@ -10,6 +11,12 @@ const Contact = () => {
   return (
     <>
       <div className="w-[100%] px-[8%] h-fit flex justify-center items-center">
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ width: "100%", height: 300 }}
+          format=""
+        />
         <div className="my-[50px] p-[2%] shadow-md">
           <h1 className="font-extrabold text-2xl mb-[50px]">Contact Us</h1>
           <p className="mb-2">
@@ -52,6 +59,13 @@ const Contact = () => {
             email.
           </p>
         </div>
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ display: "block" }}
+          layout="in-article"
+          format="fluid"
+        />
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "../Loader.module.css";
 import { useQuery } from "react-query";
 import ReactGA from "react-ga";
+import AdSense from "react-adsense";
 
 const Constitutional = () => {
   useEffect(() => {
@@ -83,8 +84,21 @@ const Constitutional = () => {
             answering your <span>Constitutional law Exam Questions</span>
           </p>
         </div>
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ width: "100%", height: 300 }}
+          format=""
+        />
         {content}
       </div>
+      <AdSense.Google
+        client="ca-pub-9515848627350834"
+        slot="9754373653"
+        style={{ display: "block" }}
+        layout="in-article"
+        format="fluid"
+      />
     </>
   );
 };

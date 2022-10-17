@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import download from "./assets/download.svg";
 import ReactGA from "react-ga";
+import AdSense from "react-adsense";
 
 const About = () => {
   useEffect(() => {
@@ -9,6 +10,12 @@ const About = () => {
   return (
     <>
       <div className="w-full h-fit px-[8%]">
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ width: "100%", height: 300 }}
+          format=""
+        />
         <div className="w-full h-fit md:h-[500px] flex flex-col sm:flex-row mt-[50px] mb-[50px]">
           <div className="w-[100%] sm:w-[65%] h-full relative">
             <img
@@ -34,6 +41,14 @@ const About = () => {
             </div>
           </div>
         </div>
+        <AdSense.Google
+          client="ca-pub-9515848627350834"
+          slot="9754373653"
+          style={{ display: "block" }}
+          format="auto"
+          responsive="true"
+          layoutKey="-gw-1+2a-9x+5c"
+        />
         <div className="w-full h-fit px-[12%] mt-3 mb-[50px]">
           <h2 className="font-bold text-xl mb-[20px]">About Tolani Popoola</h2>
           <ul className=" list-disc">
@@ -45,6 +60,14 @@ const About = () => {
           </p>
         </div>
       </div>
+      <AdSense.Google
+        client="ca-pub-9515848627350834"
+        slot="9754373653"
+        style={{ display: "block" }}
+        format="auto"
+        responsive="true"
+        layoutKey="-gw-1+2a-9x+5c"
+      />
     </>
   );
 };
